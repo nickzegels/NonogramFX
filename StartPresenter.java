@@ -24,9 +24,9 @@ public class StartPresenter {
     }
 
     public void addWindowEventHandlers (){
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setHeaderText("Welkom bij Nonogram!");
-        alert.setTitle("Nonogram");
-        alert.showAndWait();
+        //Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        //alert.setHeaderText("Welkom bij Nonogram!");
+        //alert.setTitle("Nonogram");
+        //alert.showAndWait();
     }
 }

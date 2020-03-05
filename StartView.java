@@ -1,10 +1,7 @@
 package be.kdg.nonogram.view.start;
 
 import be.kdg.nonogram.Main;
-import javafx.geometry.HPos;
-import javafx.geometry.Insets;
-import javafx.geometry.Pos;
-import javafx.geometry.Side;
+import javafx.geometry.*;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
@@ -15,13 +12,18 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
+import javafx.scene.text.Text;
 
 public class StartView extends GridPane{
     private Canvas canvas1;
     private ImageView backgroundImage;
     private Image image;
     private TextField textVeld;
+    private Text titel;
     private Button loginButton;
+    private Button aboutButton;
+    private Button rulesButton;
+
 
     public StartView() {
         this.initialiseNodes();
@@ -38,7 +40,10 @@ public class StartView extends GridPane{
 
         //Extra's
         this.textVeld = new TextField();
-        this.loginButton = new Button("Login");
+        this.loginButton = new Button("Login / Start Game !");
+        this.aboutButton = new Button("About our Game");
+        this.rulesButton = new Button("Nonogram Rules");
+        this.titel = new Text("Nonogram");
     }
 
     private void layoutNodes() {
@@ -47,13 +52,24 @@ public class StartView extends GridPane{
         this.setBackground(new Background(image2));
 
         //Text
+        this.add(titel, 0, 0);
+        this.setConstraints(titel, 0,0 ,1 ,1,  HPos.CENTER, VPos.CENTER);
+
+        //TextVeld
         this.add(textVeld,     0, 0);
         textVeld.setText("Geef je email of gebruikersnaam");
-        this.textVeld.setPrefSize(120, 20);
+        this.setConstraints(textVeld, 0,1 ,1 ,1,  HPos.CENTER, VPos.CENTER);
 
         //Button
         this.add(loginButton, 0, 1);
-        this.loginButton.setPrefSize(120, 20);
+        this.setConstraints(loginButton, 0,1 ,1 ,1,  HPos.CENTER, VPos.BOTTOM);
+
+        this.add(aboutButton, 1, 1);
+        this.setConstraints(aboutButton, 1,1 ,1 ,1,  HPos.CENTER, VPos.CENTER);
+
+        this.add(rulesButton, 1, 2);
+        this.setConstraints(rulesButton, 1,2 ,1 ,1,  HPos.CENTER, VPos.CENTER);
+
 
         //Grid
         this.setGridLinesVisible(true);
@@ -62,7 +78,7 @@ public class StartView extends GridPane{
         this.setAlignment(Pos.CENTER);
 
         ColumnConstraints column1 = new ColumnConstraints(500);
-        
+
         ColumnConstraints column2 = new ColumnConstraints(150);
 
         this.getColumnConstraints().addAll(column1, column2);
@@ -76,8 +92,9 @@ public class StartView extends GridPane{
         GridPane.setHalignment(loginButton, HPos.CENTER);
 
         setMargin(canvas1, new Insets(210, 300, 200, 200));
-
-
     }
 
+    Button getLoginButton () {
+        return loginButton;
+    }
 }

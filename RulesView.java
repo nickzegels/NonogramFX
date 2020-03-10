@@ -69,48 +69,10 @@ public class RulesView extends GridPane {
 
     private void layoutNodes() {
         //Background
-        //BackgroundImage image2 = new BackgroundImage(this.image, BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, new BackgroundPosition(Side.LEFT, 0.0, false, Side.BOTTOM, 0.0, false), BackgroundSize.DEFAULT);
-        //this.setBackground(new Background(image2));
-
-        //Vragen
-        this.add(Vraag1, 0, 0);
-        Vraag1.setStyle("-fx-font: 20 arial;");
-        setConstraints(Vraag1, 0, 0, 1, 1, HPos.CENTER, VPos.TOP);
-
-        this.add(Vraag2, 0, 1);
-        Vraag2.setStyle("-fx-font: 20 arial;");
-        setConstraints(Vraag2, 0, 1, 1, 1, HPos.CENTER, VPos.TOP);
-
-        this.add(Vraag3, 0, 2);
-        Vraag3.setStyle("-fx-font: 20 arial;");
-        setConstraints(Vraag3, 0, 2, 1, 1, HPos.CENTER, VPos.TOP);
-
-        this.add(Vraag4, 0, 3);
-        Vraag4.setStyle("-fx-font: 20 arial;");
-        setConstraints(Vraag4, 0, 3, 1, 1, HPos.CENTER, VPos.TOP);
-
-        //Antwoorden
-        this.add(Uitleg1, 0, 0);
-        setConstraints(Uitleg1, 0, 0, 1, 1, HPos.CENTER, VPos.CENTER);
-
-        this.add(Uitleg2, 0, 1);
-        setConstraints(Uitleg2, 0, 1, 1, 1, HPos.CENTER, VPos.CENTER);
-
-        this.add(Uitleg3, 0, 2);
-        setConstraints(Uitleg3, 0, 2, 1, 1, HPos.CENTER, VPos.CENTER);
-
-        this.add(Uitleg4, 0, 3);
-        setConstraints(Uitleg4, 0, 3, 1, 1, HPos.CENTER, VPos.CENTER);
-
-        //Grid
-        this.setGridLinesVisible(true);
-        this.maxWidth(600);
-
-        this.setAlignment(Pos.CENTER);
-
-        ColumnConstraints column1 = new ColumnConstraints(750);
-
-        this.getColumnConstraints().addAll(column1);
+        ColumnConstraints column1 = new ColumnConstraints(75);
+        ColumnConstraints column2 = new ColumnConstraints(600);
+        ColumnConstraints column3 = new ColumnConstraints(75);
+        this.getColumnConstraints().addAll(column1, column2, column3);
 
         RowConstraints rowConstraints1 = new RowConstraints(150);
         RowConstraints rowConstraints2 = new RowConstraints(150);
@@ -118,8 +80,46 @@ public class RulesView extends GridPane {
         RowConstraints rowConstraints4 = new RowConstraints(150);
         this.getRowConstraints().addAll(rowConstraints1, rowConstraints2, rowConstraints3, rowConstraints4);
 
-        //GridPane.setHalignment(loginButton, HPos.CENTER);
+        //Vragen
+        this.add(Vraag1, 0, 0);
+        Vraag1.setStyle("-fx-font: 20 arial;");
+        setConstraints(Vraag1, 1, 0, 1, 1, HPos.CENTER, VPos.TOP);
 
-        setMargin(canvas1, new Insets(210, 300, 200, 200));
+        this.add(Vraag2, 0, 1);
+        Vraag2.setStyle("-fx-font: 20 arial;");
+        setConstraints(Vraag2, 1, 1, 1, 1, HPos.CENTER, VPos.TOP);
+
+        this.add(Vraag3, 0, 2);
+        Vraag3.setStyle("-fx-font: 20 arial;");
+        setConstraints(Vraag3, 1, 2, 1, 1, HPos.CENTER, VPos.TOP);
+
+        this.add(Vraag4, 0, 3);
+        Vraag4.setStyle("-fx-font: 20 arial;");
+        setConstraints(Vraag4, 1, 3, 1, 1, HPos.CENTER, VPos.TOP);
+
+        //Antwoorden
+        this.add(Uitleg1, 0, 0);
+        Uitleg1.setStyle("-fx-font: 15 arial");
+        setConstraints(Uitleg1, 1, 0, 1, 1, HPos.LEFT, VPos.CENTER);
+
+        this.add(Uitleg2, 0, 1);
+        Uitleg2.setStyle("-fx-font: 15 arial");
+        setConstraints(Uitleg2, 1, 1, 1, 1, HPos.LEFT, VPos.CENTER);
+
+        this.add(Uitleg3, 0, 2);
+        Uitleg3.setStyle("-fx-font: 15 arial");
+        setConstraints(Uitleg3, 1, 2, 1, 1, HPos.LEFT, VPos.CENTER);
+
+        this.add(Uitleg4, 0, 3);
+        Uitleg4.setStyle("-fx-font: 15 arial");
+        setConstraints(Uitleg4, 1, 3, 1, 1, HPos.LEFT, VPos.CENTER);
+
+        //Grid
+        //this.setGridLinesVisible(true);
+        this.maxWidth(600);
+
+        this.setAlignment(Pos.CENTER);
+
+
     }
 }

@@ -22,8 +22,8 @@ public class StartView extends GridPane{
 
     private Image image;
 
-    private TextField gebruikersNaam;
-    private TextField textVeld1;
+    public TextField gebruikersNaam;
+    public TextField wachtwoord;
 
     private Text titel;
 
@@ -48,7 +48,7 @@ public class StartView extends GridPane{
 
         //Extra's
         this.gebruikersNaam = new TextField();
-        this.textVeld1 = new TextField();
+        this.wachtwoord = new TextField();
         this.gameStartButton = new Button("Start Game !");
         this.loginButton = new Button("Login");
         this.aboutButton = new Button("About our Game");
@@ -72,9 +72,9 @@ public class StartView extends GridPane{
         gebruikersNaam.setText("Geef je email of gebruikersnaam");
         setConstraints(gebruikersNaam, 0,1,1 ,1,  HPos.CENTER, VPos.CENTER);
 
-        this.add(textVeld1,     0, 1);
-        textVeld1.setText("Geef je wachtwoord");
-        setConstraints(textVeld1, 0,1 ,1 ,1,  HPos.CENTER, VPos.BOTTOM);
+        this.add(wachtwoord,     0, 1);
+        wachtwoord.setText("Geef je wachtwoord");
+        setConstraints(wachtwoord, 0,1 ,1 ,1,  HPos.CENTER, VPos.BOTTOM);
 
         //Button
         this.add(gameStartButton, 0, 3);
@@ -88,19 +88,17 @@ public class StartView extends GridPane{
         aboutButton.setMaxSize(130, 50);
         setConstraints(aboutButton, 1,1 ,1 ,1,  HPos.CENTER, VPos.CENTER);
 
-        this.add(rulesButton, 1, 3);
-        rulesButton.setMaxSize(130, 50);
-        setConstraints(rulesButton, 1,3 ,1 ,1,  HPos.CENTER, VPos.CENTER);
-
         this.add(nieuweGebruikerButton, 1, 2);
         nieuweGebruikerButton.setMaxSize(130, 50);
-        setConstraints(nieuweGebruikerButton, 1,2 ,1 ,1,  HPos.CENTER, VPos.CENTER);
+        setConstraints(nieuweGebruikerButton, 1,2 ,1 ,1,  HPos.CENTER, VPos.TOP);
 
         this.add(loginButton, 0, 2);
         loginButton.setMaxSize(130, 50);
         setConstraints(loginButton, 0,2 ,1 ,1,  HPos.CENTER, VPos.CENTER);
 
-        //Files
+        this.add(rulesButton, 1, 3);
+        rulesButton.setMaxSize(130, 50);
+        setConstraints(rulesButton, 1,2 ,1 ,1,  HPos.CENTER, VPos.BOTTOM);
 
         //Grid
         //this.setGridLinesVisible(true);
@@ -133,5 +131,9 @@ public class StartView extends GridPane{
 
     Button getRulesButton () { return rulesButton; }
 
-    TextField getGebruikersnaam(){ return gebruikersNaam; }
+    Button getLoginButton(){ return loginButton;  }
+
+
+    //TextField getGebruikersnaam(){ return gebruikersNaam; }
+
 }

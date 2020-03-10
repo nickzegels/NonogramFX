@@ -5,6 +5,7 @@ import be.kdg.nonogram.view.about.AboutPresenter;
 import be.kdg.nonogram.view.about.AboutView;
 import be.kdg.nonogram.view.game.GamePresenter;
 import be.kdg.nonogram.view.game.GameView;
+import be.kdg.nonogram.view.start.StartView;
 
 import be.kdg.nonogram.view.rules.RulesPresenter;
 import be.kdg.nonogram.view.rules.RulesView;
@@ -59,21 +60,28 @@ public class StartPresenter {
         view.getAboutButton().setOnAction(new EventHandler<ActionEvent>() {
               @Override
               public void handle(ActionEvent event) {
-                  if (view.getAboutButton().isHover()) {
-                      AboutView aboutView = new AboutView();
-                      AboutPresenter aboutPresenter = new AboutPresenter(model, aboutView);
-                      Stage aboutStage = new Stage();
-                      aboutStage.initOwner(view.getScene().getWindow());
-                      aboutStage.initModality(Modality.APPLICATION_MODAL);
-                      aboutStage.setScene(
-                              new Scene(aboutView));
-                      aboutStage.setX(view.getScene().getWindow().getX() + 100);
-                      aboutStage.setY(view.getScene().getWindow().getY() + 100);
-                      aboutStage.showAndWait();
-                  }
+              if (view.getAboutButton().isHover()) {
+                  AboutView aboutView = new AboutView();
+                  AboutPresenter aboutPresenter = new AboutPresenter(model, aboutView);
+                  Stage aboutStage = new Stage();
+                  aboutStage.initOwner(view.getScene().getWindow());
+                  aboutStage.initModality(Modality.APPLICATION_MODAL);
+                  aboutStage.setScene(
+                          new Scene(aboutView));
+                  aboutStage.setX(view.getScene().getWindow().getX() + 100);
+                  aboutStage.setY(view.getScene().getWindow().getY() + 100);
+                  aboutStage.showAndWait();
               }
-          }
-        );
+            }
+        });
+
+        view.getLoginButton().setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+                //StringBuilder sb = new StringBuilder();
+                //sb.append()
+            }
+        });
     }
 
     private void updateView() {

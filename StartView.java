@@ -8,9 +8,12 @@ import javafx.scene.effect.Reflection;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
+import javafx.scene.paint.Color;
 import javafx.scene.shape.Path;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
+
+import java.awt.*;
 
 public class StartView extends GridPane{
     private Canvas canvas1;
@@ -75,43 +78,46 @@ public class StartView extends GridPane{
 
         //Button
         this.add(gameStartButton, 0, 3);
-        gameStartButton.setMaxSize(300, 100);
+        gameStartButton.setMaxSize(130, 50);
+        gameStartButton.setTextFill(Color.BLACK);
+        //gameStartButton.setStyle("-fx-background-color: #baffff; -fx-background-radius: 25");
+        //gameStartButton.setBorder();
         setConstraints(gameStartButton, 0,3,1 ,1,  HPos.CENTER, VPos.TOP);
 
         this.add(aboutButton, 1, 1);
-        aboutButton.setMaxSize(125, 60);
+        aboutButton.setMaxSize(130, 50);
         setConstraints(aboutButton, 1,1 ,1 ,1,  HPos.CENTER, VPos.CENTER);
 
         this.add(rulesButton, 1, 3);
-        rulesButton.setMaxSize(125, 60);
+        rulesButton.setMaxSize(130, 50);
         setConstraints(rulesButton, 1,3 ,1 ,1,  HPos.CENTER, VPos.CENTER);
 
         this.add(nieuweGebruikerButton, 1, 2);
-        nieuweGebruikerButton.setMaxSize(125, 60);
+        nieuweGebruikerButton.setMaxSize(130, 50);
         setConstraints(nieuweGebruikerButton, 1,2 ,1 ,1,  HPos.CENTER, VPos.CENTER);
 
         this.add(loginButton, 0, 2);
-        loginButton.setMaxSize(125, 60);
+        loginButton.setMaxSize(130, 50);
         setConstraints(loginButton, 0,2 ,1 ,1,  HPos.CENTER, VPos.CENTER);
 
         //Files
 
         //Grid
         //this.setGridLinesVisible(true);
-        this.maxWidth(700);
+        this.maxWidth(500);
 
         this.setAlignment(Pos.CENTER);
 
-        ColumnConstraints column1 = new ColumnConstraints(500);
+        ColumnConstraints column1 = new ColumnConstraints(400);
 
         ColumnConstraints column2 = new ColumnConstraints(200);
 
         this.getColumnConstraints().addAll(column1, column2);
 
-        RowConstraints rowConstraints= new RowConstraints(175);
-        RowConstraints rowConstraints1= new RowConstraints(175);
-        RowConstraints rowConstraints2= new RowConstraints(175);
-        RowConstraints rowConstraints3= new RowConstraints(175);
+        RowConstraints rowConstraints= new RowConstraints(150);
+        RowConstraints rowConstraints1= new RowConstraints(150);
+        RowConstraints rowConstraints2= new RowConstraints(150);
+        RowConstraints rowConstraints3= new RowConstraints(150);
         this.getRowConstraints().addAll(rowConstraints, rowConstraints1,rowConstraints2,rowConstraints3);
 
         //setMargin(canvas1, new Insets(500, 500, 500, 500));

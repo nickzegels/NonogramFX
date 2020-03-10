@@ -74,13 +74,6 @@ public class StartPresenter {
               }
           }
         );
-
-        view.getLoginButton().setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent actionEvent) {
-
-            }
-        });
     }
 
     private void updateView() {

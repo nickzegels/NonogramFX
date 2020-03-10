@@ -18,6 +18,7 @@ public class GameView extends GridPane {
     private Canvas canvas1;
     private Image image;
     private Button testButton;
+    private GridPane rooster;
 
 
     public GameView() {
@@ -28,6 +29,8 @@ public class GameView extends GridPane {
     private void initialiseNodes() {
         //this.foto = new Image("/background.jpg");
         this.testButton = new Button("");
+        this.rooster = new GridPane();
+
     }
 
     private void layoutNodes() {
@@ -36,20 +39,22 @@ public class GameView extends GridPane {
 
         //Grid
         this.setGridLinesVisible(true);
-        this.maxWidth(600);
+        this.setWidth(300);
+        //this.minWidth(250);
+        this.maxHeight(300);
 
         this.setAlignment(Pos.CENTER);
 
-        ColumnConstraints column1 = new ColumnConstraints(50);
-        this.getColumnConstraints().addAll(column1, column1, column1, column1, column1, column1, column1, column1,
-                column1, column1, column1, column1, column1, column1, column1, column1, column1, column1);
+        ColumnConstraints column1 = new ColumnConstraints(350);
+        ColumnConstraints column2 = new ColumnConstraints(350);
+        this.getColumnConstraints().addAll(column1, column2);
 
 
-        RowConstraints rowConstraints = new RowConstraints(50);
+        RowConstraints rowConstraints = new RowConstraints(350);
+        RowConstraints rowConstraints2 = new RowConstraints(350);
+        this.getRowConstraints().addAll(rowConstraints, rowConstraints2);
 
-        this.getRowConstraints().addAll(rowConstraints, rowConstraints, rowConstraints, rowConstraints, rowConstraints,
-                rowConstraints,rowConstraints, rowConstraints, rowConstraints, rowConstraints, rowConstraints, rowConstraints,
-                rowConstraints, rowConstraints, rowConstraints, rowConstraints, rowConstraints, rowConstraints);
+        
 
 
 //        for (int i = 0; i<10;i++) {

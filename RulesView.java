@@ -74,29 +74,33 @@ public class RulesView extends GridPane {
 
         //Vragen
         this.add(Vraag1, 0, 0);
-        setConstraints(Vraag1, 0, 0, 1, 1, HPos.CENTER, VPos.CENTER);
+        Vraag1.setStyle("-fx-font: 20 arial;");
+        setConstraints(Vraag1, 0, 0, 1, 1, HPos.CENTER, VPos.TOP);
 
         this.add(Vraag2, 0, 1);
-        setConstraints(Vraag2, 0, 1, 1, 1, HPos.CENTER, VPos.CENTER);
+        Vraag2.setStyle("-fx-font: 20 arial;");
+        setConstraints(Vraag2, 0, 1, 1, 1, HPos.CENTER, VPos.TOP);
 
         this.add(Vraag3, 0, 2);
-        setConstraints(Vraag3, 0, 2, 1, 1, HPos.CENTER, VPos.CENTER);
+        Vraag3.setStyle("-fx-font: 20 arial;");
+        setConstraints(Vraag3, 0, 2, 1, 1, HPos.CENTER, VPos.TOP);
 
         this.add(Vraag4, 0, 3);
-        setConstraints(Vraag4, 0, 3, 1, 1, HPos.CENTER, VPos.CENTER);
+        Vraag4.setStyle("-fx-font: 20 arial;");
+        setConstraints(Vraag4, 0, 3, 1, 1, HPos.CENTER, VPos.TOP);
 
         //Antwoorden
-        this.add(Uitleg1, 1, 0);
-        setConstraints(Uitleg1, 1, 0, 1, 1, HPos.CENTER, VPos.CENTER);
+        this.add(Uitleg1, 0, 0);
+        setConstraints(Uitleg1, 0, 0, 1, 1, HPos.CENTER, VPos.CENTER);
 
-        this.add(Uitleg2, 1, 1);
-        setConstraints(Uitleg2, 1, 1, 1, 1, HPos.CENTER, VPos.CENTER);
+        this.add(Uitleg2, 0, 1);
+        setConstraints(Uitleg2, 0, 1, 1, 1, HPos.CENTER, VPos.CENTER);
 
-        this.add(Uitleg3, 1, 2);
-        setConstraints(Uitleg3, 1, 2, 1, 1, HPos.CENTER, VPos.CENTER);
+        this.add(Uitleg3, 0, 2);
+        setConstraints(Uitleg3, 0, 2, 1, 1, HPos.CENTER, VPos.CENTER);
 
-        this.add(Uitleg4, 1, 3);
-        setConstraints(Uitleg4, 1, 3, 1, 1, HPos.CENTER, VPos.CENTER);
+        this.add(Uitleg4, 0, 3);
+        setConstraints(Uitleg4, 0, 3, 1, 1, HPos.CENTER, VPos.CENTER);
 
         //Grid
         this.setGridLinesVisible(true);
@@ -104,10 +108,9 @@ public class RulesView extends GridPane {
 
         this.setAlignment(Pos.CENTER);
 
-        ColumnConstraints column1 = new ColumnConstraints(200);
-        ColumnConstraints column2 = new ColumnConstraints(550);
+        ColumnConstraints column1 = new ColumnConstraints(750);
 
-        this.getColumnConstraints().addAll(column1, column2);
+        this.getColumnConstraints().addAll(column1);
 
         RowConstraints rowConstraints1 = new RowConstraints(150);
         RowConstraints rowConstraints2 = new RowConstraints(150);

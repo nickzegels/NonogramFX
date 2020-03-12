@@ -18,6 +18,7 @@ public class GameView extends GridPane {
     private Button testButton;
     private GridPane rooster;
     private Text titel;
+    private Button cell;
 
 
     public GameView() {
@@ -28,12 +29,14 @@ public class GameView extends GridPane {
     private void initialiseNodes() {
         this.testButton = new Button("");
         this.rooster = new GridPane();
+        this.titel = new Text();
+        this.cell = new Button();
     }
 
     private void cellLayout(Button cell) {
-        cell.setText("Cell");
-        cell.setPrefWidth(100);
-        cell.setPrefHeight(100);
+        cell.setText("");
+        cell.setPrefWidth(55);
+        cell.setPrefHeight(55);
     }
 
     private void layoutNodes() {
@@ -41,8 +44,8 @@ public class GameView extends GridPane {
         this.setAlignment(Pos.CENTER);
         this.titel = new Text("Nonogram");
         this.add(titel, 0, 0);
-        titel.setFont(new Font(80));
-        this.setConstraints(titel, 1,0 ,1 ,1,  HPos.CENTER, VPos.CENTER);
+        titel.setFont(new Font(60));
+        this.setConstraints(titel, 1,0 ,1 ,1,  HPos.LEFT, VPos.CENTER);
 
 
         this.setGridLinesVisible(true);
@@ -57,14 +60,17 @@ public class GameView extends GridPane {
         }
         this.add(rooster, 1, 1);
 
-        ColumnConstraints column1 = new ColumnConstraints(50);
-        ColumnConstraints column2 = new ColumnConstraints(480);
-        ColumnConstraints column3 = new ColumnConstraints(125);
+        ColumnConstraints column1 = new ColumnConstraints(100);
+        ColumnConstraints column2 = new ColumnConstraints(380);
+        ColumnConstraints column3 = new ColumnConstraints(175);
         this.getColumnConstraints().addAll(column1, column2, column3);
 
         RowConstraints rowConstraints = new RowConstraints(150);
-        RowConstraints rowConstraints2 = new RowConstraints(480);
-        RowConstraints rowConstraints3 = new RowConstraints(50);
+        RowConstraints rowConstraints2 = new RowConstraints(380);
+        RowConstraints rowConstraints3 = new RowConstraints(150);
         this.getRowConstraints().addAll(rowConstraints, rowConstraints2, rowConstraints3);
     }
+
+    Button cell(){ return cell;  }
+
 }

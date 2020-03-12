@@ -25,6 +25,14 @@ public class StartView extends GridPane{
     public TextField gebruikersNaam;
     public TextField wachtwoord;
 
+    public TextField getGebruikersNaam() {
+        return gebruikersNaam;
+    }
+
+    public TextField getWachtwoord() {
+        return wachtwoord;
+    }
+
     private Text titel;
 
     private Button loginButton;
@@ -49,12 +57,15 @@ public class StartView extends GridPane{
         //Extra's
         this.gebruikersNaam = new TextField();
         this.wachtwoord = new TextField();
+        this.titel = new Text("Nonogram");
+
         this.gameStartButton = new Button("Start Game !");
         this.loginButton = new Button("Login");
         this.aboutButton = new Button("About our Game");
         this.rulesButton = new Button("Nonogram Rules");
-        this.titel = new Text("Nonogram");
         this.nieuweGebruikerButton = new Button("Nieuwe gebruiker !");
+
+
     }
 
     private void layoutNodes() {
@@ -107,7 +118,6 @@ public class StartView extends GridPane{
         this.setAlignment(Pos.CENTER);
 
         ColumnConstraints column1 = new ColumnConstraints(400);
-
         ColumnConstraints column2 = new ColumnConstraints(200);
 
         this.getColumnConstraints().addAll(column1, column2);
@@ -133,7 +143,6 @@ public class StartView extends GridPane{
 
     Button getLoginButton(){ return loginButton;  }
 
-
-    //TextField getGebruikersnaam(){ return gebruikersNaam; }
+    Button getGebruikersnaam(){ return nieuweGebruikerButton; }
 
 }

@@ -2,6 +2,8 @@ package be.kdg.nonogram.view.game;
 
 import be.kdg.nonogram.model.NonogramModel;
 import be.kdg.nonogram.view.start.StartView;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.scene.control.Alert;
 import javafx.scene.input.MouseEvent;
 
@@ -26,5 +28,13 @@ public class GamePresenter {
     }
 
     public void addWindowEventHandlers (){
+        view.cell().setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+                if (view.cell().isHover()) {
+                    view.cell().setText("Ingevuld");
+                }
+            }
+        });
     }
 }

@@ -15,6 +15,10 @@ import javafx.scene.Scene;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+
 public class StartPresenter {
     private NonogramModel model;
     private StartView view;
@@ -75,11 +79,21 @@ public class StartPresenter {
             }
         });
 
+        //login
         view.getLoginButton().setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
-                //StringBuilder sb = new StringBuilder();
-                //sb.append()
+                if (view.getGebruikersNaam().getText().equals("user") && view.getWachtwoord().getText().equals("pass")){
+                    view.getLoginButton().setText("Login gelukt");
+                } else{
+                    view.getLoginButton().setText("Login mislukt");
+                }
+
+                StringBuilder sb = new StringBuilder();
+                sb.append(view.getGebruikersNaam().getText().toString() + "\n");
+                sb.append(view.getWachtwoord().getText().toString());
+
+                File file = new File("/resources/Files/Users.txt");
             }
         });
     }

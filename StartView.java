@@ -1,12 +1,10 @@
 package be.kdg.nonogram.view.start;
 
 import javafx.geometry.*;
+import javafx.geometry.Insets;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
-import javafx.scene.effect.Reflection;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Path;
@@ -17,11 +15,6 @@ import java.awt.*;
 
 public class StartView extends GridPane{
     private Canvas canvas1;
-
-    private ImageView backgroundImage;
-
-    private Image image;
-
     public TextField gebruikersNaam;
     public TextField wachtwoord;
 
@@ -36,7 +29,7 @@ public class StartView extends GridPane{
     private Text titel;
 
     private Button loginButton;
-    private Button nieuweGebruikerButton;
+    private Button newUserButton;
     private Button gameStartButton;
     private Button aboutButton;
     private Button rulesButton;
@@ -50,10 +43,6 @@ public class StartView extends GridPane{
         //Canvas
         this.canvas1 = new Canvas();
 
-        //Image
-        this.backgroundImage = new ImageView(image);
-        this.image = new Image("/Images/loginBackground.png");
-
         //Extra's
         this.gebruikersNaam = new TextField();
         this.wachtwoord = new TextField();
@@ -63,19 +52,19 @@ public class StartView extends GridPane{
         this.loginButton = new Button("Login");
         this.aboutButton = new Button("About our Game");
         this.rulesButton = new Button("Nonogram Rules");
-        this.nieuweGebruikerButton = new Button("Nieuwe gebruiker !");
+        this.newUserButton = new Button("Nieuwe gebruiker !");
 
 
     }
 
     private void layoutNodes() {
         //Background
-        BackgroundImage image2 = new BackgroundImage(this.image, BackgroundRepeat.REPEAT, BackgroundRepeat.NO_REPEAT, new BackgroundPosition(Side.LEFT, 0.0, false, Side.BOTTOM, 0.0, false), BackgroundSize.DEFAULT);
-        this.setBackground(new Background(image2));
+        setBackground(new Background(new BackgroundFill(Color.DODGERBLUE, CornerRadii.EMPTY, Insets.EMPTY)));
 
-        //Text
+        // Text
         this.add(titel, 0, 0);
         titel.setFont(new Font(80));
+        titel.setFill(Color.WHITESMOKE);
         this.setConstraints(titel, 0,0 ,1 ,1,  HPos.CENTER, VPos.CENTER);
 
         //TextVeld
@@ -99,9 +88,9 @@ public class StartView extends GridPane{
         aboutButton.setMaxSize(130, 50);
         setConstraints(aboutButton, 1,1 ,1 ,1,  HPos.CENTER, VPos.CENTER);
 
-        this.add(nieuweGebruikerButton, 1, 2);
-        nieuweGebruikerButton.setMaxSize(130, 50);
-        setConstraints(nieuweGebruikerButton, 1,2 ,1 ,1,  HPos.CENTER, VPos.TOP);
+        this.add(newUserButton, 1, 2);
+        newUserButton.setMaxSize(130, 50);
+        setConstraints(newUserButton, 1,2 ,1 ,1,  HPos.CENTER, VPos.TOP);
 
         this.add(loginButton, 0, 2);
         loginButton.setMaxSize(130, 50);
@@ -143,6 +132,6 @@ public class StartView extends GridPane{
 
     Button getLoginButton(){ return loginButton;  }
 
-    Button getGebruikersnaam(){ return nieuweGebruikerButton; }
+    Button getnewUserButton(){ return newUserButton; }
 
 }

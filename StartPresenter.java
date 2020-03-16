@@ -5,6 +5,8 @@ import be.kdg.nonogram.view.about.AboutPresenter;
 import be.kdg.nonogram.view.about.AboutView;
 import be.kdg.nonogram.view.game.GamePresenter;
 import be.kdg.nonogram.view.game.GameView;
+import be.kdg.nonogram.view.newUser.newUserPresenter;
+import be.kdg.nonogram.view.newUser.newUserView;
 import be.kdg.nonogram.view.start.StartView;
 
 import be.kdg.nonogram.view.rules.RulesPresenter;
@@ -14,10 +16,6 @@ import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
 
 public class StartPresenter {
     private NonogramModel model;
@@ -31,17 +29,6 @@ public class StartPresenter {
     }
 
     private void addEvenHandlers() {
-        view.getGameStartButton().setOnAction(
-                actionEvent -> {
-                    if (view.getGameStartButton().isHover()) {
-                        GameView GameView = new GameView();
-                        GamePresenter gamePresenter = new GamePresenter(model, GameView);
-                        view.getScene().setRoot(GameView);
-                        GameView.getScene().getWindow().sizeToScene();
-                    }
-                }
-        );
-
         view.getRulesButton().setOnAction(new EventHandler<ActionEvent>() {
               @Override
               public void handle(ActionEvent event) {
@@ -79,23 +66,49 @@ public class StartPresenter {
             }
         });
 
+        view.getnewUserButton().setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                if (view.getnewUserButton().isHover()) {
+                    newUserView newUserView = new newUserView();
+                    newUserPresenter newUserPresenter = new newUserPresenter(model, newUserView);
+                    Stage newUserStage = new Stage();
+                    newUserStage.initOwner(view.getScene().getWindow());
+                    newUserStage.initModality(Modality.APPLICATION_MODAL);
+                    newUserStage.setScene(
+                            new Scene(newUserView));
+                    newUserStage.setX(view.getScene().getWindow().getX() + 100);
+                    newUserStage.setY(view.getScene().getWindow().getY() + 100);
+                    newUserStage.showAndWait();
+                }
+            }
+        });
+
         //login
         view.getLoginButton().setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
-                if (view.getGebruikersNaam().getText().equals("user") && view.getWachtwoord().getText().equals("pass")){
-                    view.getLoginButton().setText("Login gelukt");
+                StringBuilder loginGegevens = new StringBuilder();
+                loginGegevens.append(view.getGebruikersNaam().getText().toString()).append("#").append(view.getWachtwoord().getText().toString()).append("\n");
+
+                if ("a" == "b"){
+                    view.getLoginButton().setText("Login gelukt !");
                 } else{
-                    view.getLoginButton().setText("Login mislukt");
+                    view.getLoginButton().setText("Login mislukt !");
                 }
-
-                StringBuilder sb = new StringBuilder();
-                sb.append(view.getGebruikersNaam().getText().toString() + "\n");
-                sb.append(view.getWachtwoord().getText().toString());
-
-                File file = new File("/resources/Files/Users.txt");
             }
         });
+
+        view.getGameStartButton().setOnAction(
+                actionEvent -> {
+                    if (view.getGameStartButton().isHover() && view.getGebruikersNaam().getText().equals("user") && view.getWachtwoord().getText().equals("pass")) {
+                        GameView GameView = new GameView();
+                        GamePresenter gamePresenter = new GamePresenter(model, GameView);
+                        view.getScene().setRoot(GameView);
+                        GameView.getScene().getWindow().sizeToScene();
+                    }
+                }
+        );
     }
 
     private void updateView() {

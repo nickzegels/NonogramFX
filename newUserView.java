@@ -1,13 +1,13 @@
 package be.kdg.nonogram.view.newUser;
 
 import javafx.geometry.HPos;
+import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.geometry.VPos;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.ColumnConstraints;
-import javafx.scene.layout.GridPane;
-import javafx.scene.layout.RowConstraints;
+import javafx.scene.layout.*;
+import javafx.scene.paint.Color;
 
 public class newUserView extends GridPane {
     public TextField gebruikersNaam;
@@ -34,7 +34,10 @@ public class newUserView extends GridPane {
     }
 
     private void layoutNodes() {
+        //Background
+        setBackground(new Background(new BackgroundFill(Color.DODGERBLUE, CornerRadii.EMPTY, Insets.EMPTY)));
 
+        //Window
         this.add(gebruikersNaam,     1, 1);
         gebruikersNaam.setText("Geef hier je nieuwe Gebruikersnaam in");
         setConstraints(gebruikersNaam, 1,1,1 ,1,  HPos.CENTER, VPos.CENTER);
@@ -48,7 +51,7 @@ public class newUserView extends GridPane {
         setConstraints(nieuweGebruikerButton, 1,2 ,1 ,1,  HPos.CENTER, VPos.CENTER);
 
         this.maxWidth(500);
-        this.setGridLinesVisible(true);
+        //this.setGridLinesVisible(true);
 
         this.setAlignment(Pos.CENTER);
 

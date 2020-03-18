@@ -1,15 +1,15 @@
 package be.kdg.nonogram.view.rules;
 
 import javafx.geometry.HPos;
+import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.geometry.VPos;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.ColumnConstraints;
-import javafx.scene.layout.GridPane;
-import javafx.scene.layout.RowConstraints;
+import javafx.scene.layout.*;
+import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 
 public class RulesView extends GridPane {
@@ -67,16 +67,7 @@ public class RulesView extends GridPane {
 
     private void layoutNodes() {
         //Background
-        ColumnConstraints column1 = new ColumnConstraints(75);
-        ColumnConstraints column2 = new ColumnConstraints(600);
-        ColumnConstraints column3 = new ColumnConstraints(75);
-        this.getColumnConstraints().addAll(column1, column2, column3);
-
-        RowConstraints rowConstraints1 = new RowConstraints(150);
-        RowConstraints rowConstraints2 = new RowConstraints(150);
-        RowConstraints rowConstraints3 = new RowConstraints(150);
-        RowConstraints rowConstraints4 = new RowConstraints(150);
-        this.getRowConstraints().addAll(rowConstraints1, rowConstraints2, rowConstraints3, rowConstraints4);
+        setBackground(new Background(new BackgroundFill(Color.DODGERBLUE, CornerRadii.EMPTY, Insets.EMPTY)));
 
         //Vragen
         this.add(Vraag1, 0, 0);
@@ -115,9 +106,17 @@ public class RulesView extends GridPane {
         //Grid
         //this.setGridLinesVisible(true);
         this.maxWidth(600);
-
         this.setAlignment(Pos.CENTER);
 
+        ColumnConstraints column1 = new ColumnConstraints(75);
+        ColumnConstraints column2 = new ColumnConstraints(600);
+        ColumnConstraints column3 = new ColumnConstraints(75);
+        this.getColumnConstraints().addAll(column1, column2, column3);
 
+        RowConstraints rowConstraints1 = new RowConstraints(150);
+        RowConstraints rowConstraints2 = new RowConstraints(150);
+        RowConstraints rowConstraints3 = new RowConstraints(150);
+        RowConstraints rowConstraints4 = new RowConstraints(150);
+        this.getRowConstraints().addAll(rowConstraints1, rowConstraints2, rowConstraints3, rowConstraints4);
     }
 }

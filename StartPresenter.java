@@ -30,22 +30,22 @@ public class StartPresenter {
 
     private void addEvenHandlers() {
         view.getRulesButton().setOnAction(new EventHandler<>() {
-                                              @Override
-                                              public void handle(ActionEvent event) {
-                                                  if (view.getRulesButton().isHover()) {
-                                                      RulesView rulesView = new RulesView();
-                                                      RulesPresenter rulesPresenter = new RulesPresenter(model, rulesView);
-                                                      Stage rulesStage = new Stage();
-                                                      rulesStage.initOwner(view.getScene().getWindow());
-                                                      rulesStage.initModality(Modality.APPLICATION_MODAL);
-                                                      rulesStage.setScene(
-                                                              new Scene(rulesView));
-                                                      rulesStage.setX(view.getScene().getWindow().getX() + 100);
-                                                      rulesStage.setY(view.getScene().getWindow().getY() + 100);
-                                                      rulesStage.showAndWait();
-                                                  }
-                                              }
-                                          }
+              @Override
+              public void handle(ActionEvent event) {
+                  if (view.getRulesButton().isHover()) {
+                      RulesView rulesView = new RulesView();
+                      RulesPresenter rulesPresenter = new RulesPresenter(model, rulesView);
+                      Stage rulesStage = new Stage();
+                      rulesStage.initOwner(view.getScene().getWindow());
+                      rulesStage.initModality(Modality.APPLICATION_MODAL);
+                      rulesStage.setScene(
+                              new Scene(rulesView));
+                      rulesStage.setX(view.getScene().getWindow().getX() + 100);
+                      rulesStage.setY(view.getScene().getWindow().getY() + 100);
+                      rulesStage.showAndWait();
+                  }
+              }
+          }
         );
 
         view.getAboutButton().setOnAction(new EventHandler<>() {

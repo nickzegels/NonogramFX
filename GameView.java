@@ -1,25 +1,11 @@
 package be.kdg.nonogram.view.game;
 
-
-import javafx.geometry.HPos;
-import javafx.geometry.Insets;
-import javafx.geometry.Pos;
-import javafx.geometry.VPos;
-import javafx.scene.canvas.Canvas;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
-import javafx.scene.image.Image;
+import javafx.geometry.*;
 import javafx.scene.layout.*;
-import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 
 public class GameView extends GridPane {
-    private Button testButton;
-    private GridPane rooster;
-    private Text titel;
-    private Button cell;
-
+    public Text titel;
 
     public GameView() {
         this.initialiseNodes();
@@ -27,50 +13,76 @@ public class GameView extends GridPane {
     }
 
     private void initialiseNodes() {
-        this.testButton = new Button("");
-        this.rooster = new GridPane();
-        this.titel = new Text();
-        this.cell = new Button();
-    }
-
-    private void cellLayout(Button cell) {
-        cell.setText("");
-        cell.setPrefWidth(55);
-        cell.setPrefHeight(55);
+        this.titel = new Text("Dit is de Game page");
     }
 
     private void layoutNodes() {
-        //Grid
-        this.setAlignment(Pos.CENTER);
-        this.titel = new Text("Nonogram");
+
         this.add(titel, 0, 0);
-        titel.setFont(new Font(60));
-        this.setConstraints(titel, 1,0 ,1 ,1,  HPos.LEFT, VPos.CENTER);
+        setConstraints(titel, 0,0 ,1 ,1,  HPos.CENTER, VPos.TOP);
 
+        ColumnConstraints column1 = new ColumnConstraints(400);
+        this.getColumnConstraints().addAll(column1);
 
-        this.setGridLinesVisible(true);
-        rooster.setGridLinesVisible(true);
-
-        for (int a = 0; a < 7; a++) {
-            for (int b = 0; b < 7; b++) {
-                Button cell = new Button();
-                cellLayout(cell);
-                rooster.add(cell, a, b, 1, 1);
-            }
-        }
-        this.add(rooster, 1, 1);
-
-        ColumnConstraints column1 = new ColumnConstraints(100);
-        ColumnConstraints column2 = new ColumnConstraints(380);
-        ColumnConstraints column3 = new ColumnConstraints(175);
-        this.getColumnConstraints().addAll(column1, column2, column3);
-
-        RowConstraints rowConstraints = new RowConstraints(150);
-        RowConstraints rowConstraints2 = new RowConstraints(380);
-        RowConstraints rowConstraints3 = new RowConstraints(150);
-        this.getRowConstraints().addAll(rowConstraints, rowConstraints2, rowConstraints3);
+        RowConstraints rowConstraint1 = new RowConstraints(400);
+        this.getRowConstraints().addAll(rowConstraint1);
     }
-
-    Button cell(){ return cell;  }
-
 }
+
+
+
+
+
+
+
+
+// TIMER
+
+//    private static final int START_TICK_DURATION_MILLIS = 1000;
+//
+//    private int hours;
+//    private int minutes;
+//    private int seconds;
+//
+//    private int tickDurationMillis;
+//
+//
+//    public void tick() {
+//        this.seconds++;
+//
+//        if (this.seconds == 60) {
+//            this.seconds = 0;
+//            this.minutes++;
+//
+//            if (this.minutes == 60) {
+//                this.minutes = 0;
+//                this.hours++;
+//            }
+//        }
+//    }
+//
+//    public int getHours() {
+//        return hours;
+//    }
+//
+//    public int getMinutes() {
+//        return minutes;
+//    }
+//
+//    public int getSeconds() {
+//        return seconds;
+//    }
+//
+//    public void reset() {
+//        this.hours = 0;
+//        this.minutes = 0;
+//        this.seconds = 0;
+//        if (this.tickDurationMillis > 100) {
+//            this.tickDurationMillis -= 100;
+//        }else {this.tickDurationMillis = 10;}
+//    }
+//
+//    public int getTickDurationMillis() {
+//        return tickDurationMillis;
+//    }
+//}

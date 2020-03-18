@@ -9,12 +9,6 @@ import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.RowConstraints;
 
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.util.ArrayList;
-
 public class newUserView extends GridPane {
     public TextField gebruikersNaam;
     public TextField wachtwoord;
@@ -26,8 +20,6 @@ public class newUserView extends GridPane {
     }
 
     private Button nieuweGebruikerButton;
-
-    public Files users;
 
     public newUserView() {
         this.initialiseNodes();
@@ -42,15 +34,7 @@ public class newUserView extends GridPane {
     }
 
     private void layoutNodes() {
-        try {
-            Path userBestand = Paths.get("Files/Users.txt");
-            Files.createFile(userBestand);
-            String text = "dit is text";
-            Files.write(userBestand, text.getBytes());
-        }catch (IOException e){
-            throw new DemoFilesException(e);
-        }
-        
+
         this.add(gebruikersNaam,     1, 1);
         gebruikersNaam.setText("Geef hier je nieuwe Gebruikersnaam in");
         setConstraints(gebruikersNaam, 1,1,1 ,1,  HPos.CENTER, VPos.CENTER);

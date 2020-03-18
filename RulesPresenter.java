@@ -1,7 +1,6 @@
 package be.kdg.nonogram.view.rules;
 
 import be.kdg.nonogram.model.NonogramModel;
-import be.kdg.nonogram.view.about.AboutView;
 
 public class RulesPresenter {
     private NonogramModel model;

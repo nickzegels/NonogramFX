@@ -7,32 +7,43 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
-import javafx.scene.shape.Path;
+
+import java.io.*;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 
-import java.awt.*;
+
+import java.util.ArrayList;
 
 public class StartView extends GridPane{
-    private Canvas canvas1;
+    //Text
     public TextField gebruikersNaam;
     public TextField wachtwoord;
+    private Text titel;
 
+    //get-text
     public TextField getGebruikersNaam() {
         return gebruikersNaam;
     }
-
     public TextField getWachtwoord() {
         return wachtwoord;
     }
 
-    private Text titel;
-
+    //Buttons
     private Button loginButton;
     private Button newUserButton;
     private Button gameStartButton;
     private Button aboutButton;
     private Button rulesButton;
+
+    // Users bestand
+    public static FileWriter userBestand;
+    public static BufferedWriter out;
+    public static BufferedReader reader;
+    public ArrayList<String> userList;
+
+    //Login
+    public static Boolean loginBool;
 
     public StartView() {
         this.initialiseNodes();
@@ -41,20 +52,41 @@ public class StartView extends GridPane{
 
     private void initialiseNodes() {
         //Canvas
-        this.canvas1 = new Canvas();
+        Canvas canvas1 = new Canvas();
 
         //Extra's
         this.gebruikersNaam = new TextField();
         this.wachtwoord = new TextField();
         this.titel = new Text("Nonogram");
+        this.userList = new ArrayList<>();
+        loginBool = Boolean.FALSE;
 
+        //Buttons
         this.gameStartButton = new Button("Start Game !");
         this.loginButton = new Button("Login");
         this.aboutButton = new Button("About our Game");
         this.rulesButton = new Button("Nonogram Rules");
         this.newUserButton = new Button("Nieuwe gebruiker !");
 
+        //Users bestand inlezen
+        try {
+            userBestand = new FileWriter("NonogramGame/resources/Files/Users.txt", true);
+            out = new BufferedWriter(userBestand);
 
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        //Users bestand uitlezen
+        try (BufferedReader reader = new BufferedReader(new FileReader(new File("NonogramGame/resources/Files/Users.txt")))){
+
+        String line;
+        while ((line = reader.readLine()) != null)
+            userList.add(line);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        System.out.println(userList);
     }
 
     private void layoutNodes() {
@@ -65,7 +97,7 @@ public class StartView extends GridPane{
         this.add(titel, 0, 0);
         titel.setFont(new Font(80));
         titel.setFill(Color.WHITESMOKE);
-        this.setConstraints(titel, 0,0 ,1 ,1,  HPos.CENTER, VPos.CENTER);
+        setConstraints(titel, 0,0 ,1 ,1,  HPos.CENTER, VPos.CENTER);
 
         //TextVeld
         this.add(gebruikersNaam,     0, 0);
@@ -78,8 +110,8 @@ public class StartView extends GridPane{
 
         //Button
         this.add(gameStartButton, 0, 3);
-        gameStartButton.setMaxSize(130, 50);
-        gameStartButton.setTextFill(Color.BLACK);
+        //gameStartButton.setMaxSize(130, 50);
+        //gameStartButton.setTextFill(Color.BLACK);
         //gameStartButton.setStyle("-fx-background-color: #baffff; -fx-background-radius: 25");
         //gameStartButton.setBorder();
         setConstraints(gameStartButton, 0,3,1 ,1,  HPos.CENTER, VPos.TOP);
@@ -101,9 +133,7 @@ public class StartView extends GridPane{
         setConstraints(rulesButton, 1,2 ,1 ,1,  HPos.CENTER, VPos.BOTTOM);
 
         //Grid
-        //this.setGridLinesVisible(true);
         this.maxWidth(500);
-
         this.setAlignment(Pos.CENTER);
 
         ColumnConstraints column1 = new ColumnConstraints(400);
@@ -116,8 +146,6 @@ public class StartView extends GridPane{
         RowConstraints rowConstraints2= new RowConstraints(150);
         RowConstraints rowConstraints3= new RowConstraints(150);
         this.getRowConstraints().addAll(rowConstraints, rowConstraints1,rowConstraints2,rowConstraints3);
-
-        //setMargin(canvas1, new Insets(500, 500, 500, 500));
     }
 
     Button getGameStartButton () {
@@ -134,4 +162,5 @@ public class StartView extends GridPane{
 
     Button getnewUserButton(){ return newUserButton; }
 
+    ArrayList<String> getUserList() { return  userList; }
 }

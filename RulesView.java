@@ -1,7 +1,6 @@
 package be.kdg.nonogram.view.rules;
 
 import javafx.geometry.HPos;
-import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.geometry.VPos;
 import javafx.scene.canvas.Canvas;
@@ -14,7 +13,6 @@ import javafx.scene.layout.RowConstraints;
 import javafx.scene.text.Text;
 
 public class RulesView extends GridPane {
-    private Canvas canvas1;
     private ImageView backgroundImage;
     private Image image;
     private Button loginButton;
@@ -64,7 +62,7 @@ public class RulesView extends GridPane {
                 " van aaneengesloten blauwe vakjes omschrijven. \n" +
                 " De groepen zijn gescheiden door een leeg vakje.");
 
-        this.canvas1 = new Canvas();
+        Canvas canvas1 = new Canvas();
     }
 
     private void layoutNodes() {

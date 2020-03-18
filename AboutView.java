@@ -1,11 +1,6 @@
 package be.kdg.nonogram.view.about;
 
 import javafx.geometry.*;
-import javafx.scene.canvas.Canvas;
-import javafx.scene.control.Button;
-import javafx.scene.control.TextField;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import javafx.scene.text.Text;
 
@@ -22,7 +17,6 @@ public class AboutView extends GridPane {
     }
 
     private void layoutNodes() {
-
         this.add(titel, 0, 0);
         setConstraints(titel, 0,0 ,1 ,1,  HPos.CENTER, VPos.TOP);
 

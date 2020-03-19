@@ -10,6 +10,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 
 public class RulesView extends GridPane {
@@ -65,53 +66,64 @@ public class RulesView extends GridPane {
         Canvas canvas1 = new Canvas();
     }
 
+    public void setStyleVraag(Text text){
+        text.setFont(new Font(16));
+        text.setFill(Color.WHITE);
+        text.setUnderline(true);
+    }
+
+    public void setStyleUitleg(Text text){
+        text.setFont(new Font(13));
+        text.setFill(Color.WHITE);
+    }
+
     private void layoutNodes() {
         //Background
-        setBackground(new Background(new BackgroundFill(Color.DODGERBLUE, CornerRadii.EMPTY, Insets.EMPTY)));
+        setBackground(new Background(new BackgroundFill(Color.LIGHTSALMON, CornerRadii.EMPTY, Insets.EMPTY)));
+
+        //Stijl van tekst zetten
+        setStyleVraag(Vraag1);
+        setStyleVraag(Vraag2);
+        setStyleVraag(Vraag3);
+        setStyleVraag(Vraag4);
+        setStyleUitleg(Uitleg1);
+        setStyleUitleg(Uitleg2);
+        setStyleUitleg(Uitleg3);
+        setStyleUitleg(Uitleg4);
 
         //Vragen
         this.add(Vraag1, 0, 0);
-        Vraag1.setStyle("-fx-font: 20 arial;");
-        setConstraints(Vraag1, 1, 0, 1, 1, HPos.CENTER, VPos.TOP);
+        setConstraints(Vraag1, 0, 0, 1, 1, HPos.CENTER, VPos.TOP);
 
         this.add(Vraag2, 0, 1);
-        Vraag2.setStyle("-fx-font: 20 arial;");
-        setConstraints(Vraag2, 1, 1, 1, 1, HPos.CENTER, VPos.TOP);
+        setConstraints(Vraag2, 0, 1, 1, 1, HPos.CENTER, VPos.TOP);
 
         this.add(Vraag3, 0, 2);
-        Vraag3.setStyle("-fx-font: 20 arial;");
-        setConstraints(Vraag3, 1, 2, 1, 1, HPos.CENTER, VPos.TOP);
+        setConstraints(Vraag3, 0, 2, 1, 1, HPos.CENTER, VPos.TOP);
 
         this.add(Vraag4, 0, 3);
-        Vraag4.setStyle("-fx-font: 20 arial;");
-        setConstraints(Vraag4, 1, 3, 1, 1, HPos.CENTER, VPos.TOP);
+        setConstraints(Vraag4, 0, 3, 1, 1, HPos.CENTER, VPos.TOP);
 
         //Antwoorden
         this.add(Uitleg1, 0, 0);
-        Uitleg1.setStyle("-fx-font: 15 arial");
-        setConstraints(Uitleg1, 1, 0, 1, 1, HPos.LEFT, VPos.CENTER);
+        setConstraints(Uitleg1, 0, 0, 1, 1, HPos.CENTER, VPos.CENTER);
 
         this.add(Uitleg2, 0, 1);
-        Uitleg2.setStyle("-fx-font: 15 arial");
-        setConstraints(Uitleg2, 1, 1, 1, 1, HPos.LEFT, VPos.CENTER);
+        setConstraints(Uitleg2, 0, 1, 1, 1, HPos.CENTER, VPos.CENTER);
 
         this.add(Uitleg3, 0, 2);
-        Uitleg3.setStyle("-fx-font: 15 arial");
-        setConstraints(Uitleg3, 1, 2, 1, 1, HPos.LEFT, VPos.CENTER);
+        setConstraints(Uitleg3, 0, 2, 1, 1, HPos.CENTER, VPos.CENTER);
 
         this.add(Uitleg4, 0, 3);
-        Uitleg4.setStyle("-fx-font: 15 arial");
-        setConstraints(Uitleg4, 1, 3, 1, 1, HPos.LEFT, VPos.CENTER);
+        setConstraints(Uitleg4, 0, 3, 1, 1, HPos.CENTER, VPos.CENTER);
 
         //Grid
         //this.setGridLinesVisible(true);
         this.maxWidth(600);
         this.setAlignment(Pos.CENTER);
 
-        ColumnConstraints column1 = new ColumnConstraints(75);
-        ColumnConstraints column2 = new ColumnConstraints(600);
-        ColumnConstraints column3 = new ColumnConstraints(75);
-        this.getColumnConstraints().addAll(column1, column2, column3);
+        ColumnConstraints column = new ColumnConstraints(500);
+        this.getColumnConstraints().addAll(column);
 
         RowConstraints rowConstraints1 = new RowConstraints(150);
         RowConstraints rowConstraints2 = new RowConstraints(150);

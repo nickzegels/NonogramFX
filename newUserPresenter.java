@@ -25,7 +25,7 @@ public class newUserPresenter {
         userView.getnieuweGebruikerButton().setOnAction(new EventHandler<>() {
             @Override
             public void handle(ActionEvent actionEvent) {
-                String loginGegevens = (userView.getGebruikersNaam().getText() + userView.getWachtwoord().getText());
+                String loginGegevens = (userView.getGebruikersNaam().getText() + ("#") + userView.getWachtwoord().getText());
 
                 try {
                     StartView.out.write(loginGegevens);

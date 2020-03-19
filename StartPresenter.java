@@ -89,7 +89,7 @@ public class StartPresenter {
             @Override
             public void handle(ActionEvent actionEvent) {
                 StringBuilder loginGegevens = new StringBuilder();
-                loginGegevens.append(view.getGebruikersNaam().getText()).append(view.getWachtwoord().getText());
+                loginGegevens.append(view.getGebruikersNaam().getText()).append("#").append(view.getWachtwoord().getText());
 
                 boolean login = false;
                 StartView.loginBool = false;
@@ -98,6 +98,8 @@ public class StartPresenter {
                     if (o.toString().equals(loginGegevens.toString())) {
                         StartView.loginBool = true;
                         System.out.println("Login gelukt");
+                    } else {
+                        System.out.println("Login Mislukt");
                     }
                 }
                 //System.out.println(StartView.loginBool.toString());
@@ -117,6 +119,7 @@ public class StartPresenter {
                             new Scene(gameView));
                     GameStage.setX(view.getScene().getWindow().getX() + 100);
                     GameStage.setY(view.getScene().getWindow().getY() + 100);
+
                     GameStage.showAndWait();
                 }
             }

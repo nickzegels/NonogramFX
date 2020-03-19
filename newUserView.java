@@ -8,10 +8,12 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
+import javafx.scene.text.Text;
 
 public class newUserView extends GridPane {
     public TextField gebruikersNaam;
     public TextField wachtwoord;
+    public Text info;
     public TextField getGebruikersNaam() {
         return gebruikersNaam;
     }
@@ -31,16 +33,20 @@ public class newUserView extends GridPane {
         this.wachtwoord = new TextField();
 
        this.nieuweGebruikerButton = new Button("Nieuw Acount !");
+       this.info = new Text("Je mag maar 1 user per keer maken !");
     }
 
     private void layoutNodes() {
         //Background
-        setBackground(new Background(new BackgroundFill(Color.DODGERBLUE, CornerRadii.EMPTY, Insets.EMPTY)));
+        setBackground(new Background(new BackgroundFill(Color.LIGHTSALMON, CornerRadii.EMPTY, Insets.EMPTY)));
 
         //Window
         this.add(gebruikersNaam,     1, 1);
         gebruikersNaam.setText("Geef hier je nieuwe Gebruikersnaam in");
         setConstraints(gebruikersNaam, 1,1,1 ,1,  HPos.CENTER, VPos.CENTER);
+
+        this.add(info,     1, 0);
+        setConstraints(info, 1,0,1 ,1,  HPos.CENTER, VPos.CENTER);
 
         this.add(wachtwoord,     1, 1);
         wachtwoord.setText("Geef hier je nieuwe wachtwoord in");

@@ -91,7 +91,7 @@ public class StartView extends GridPane{
 
     private void layoutNodes() {
         //Background
-        setBackground(new Background(new BackgroundFill(Color.DODGERBLUE, CornerRadii.EMPTY, Insets.EMPTY)));
+        setBackground(new Background(new BackgroundFill(Color.LIGHTSALMON, CornerRadii.EMPTY, Insets.EMPTY)));
 
         // Text
         this.add(titel, 0, 0);

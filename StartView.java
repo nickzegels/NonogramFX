@@ -16,6 +16,7 @@ import javafx.scene.text.Text;
 import java.util.ArrayList;
 
 public class StartView extends GridPane{
+    private static ArrayList userList;
     //Text
     public TextField gebruikersNaam;
     public TextField wachtwoord;
@@ -40,7 +41,6 @@ public class StartView extends GridPane{
     public static FileWriter userBestand;
     public static BufferedWriter out;
     public static BufferedReader reader;
-    public ArrayList<String> userList;
 
     //Login
     public static Boolean loginBool;
@@ -78,7 +78,7 @@ public class StartView extends GridPane{
         }
 
         //Users bestand uitlezen
-        try (BufferedReader reader = new BufferedReader(new FileReader(new File("NonogramGame/resources/Files/Users.txt")))){
+        try (BufferedReader reader = new BufferedReader(new InputStreamReader(getClass().getResourceAsStream("/Files/Users.txt")));){
 
         String line;
         while ((line = reader.readLine()) != null)
@@ -87,6 +87,12 @@ public class StartView extends GridPane{
             e.printStackTrace();
         }
         System.out.println(userList);
+    }
+
+    public void ButtonLayout(Button button){
+        button.setMaxSize(130, 50);
+        button.setTextFill(Color.BLACK);
+        button.setStyle("-fx-background-color: #D3D3D3; -fx-background-radius: 10");
     }
 
     private void layoutNodes() {
@@ -109,27 +115,26 @@ public class StartView extends GridPane{
         setConstraints(wachtwoord, 0,1 ,1 ,1,  HPos.CENTER, VPos.BOTTOM);
 
         //Button
+        ButtonLayout(gameStartButton);
+        ButtonLayout(aboutButton);
+        ButtonLayout(rulesButton);
+        ButtonLayout(loginButton);
+        ButtonLayout(gameStartButton);
+        ButtonLayout(newUserButton);
+
         this.add(gameStartButton, 0, 3);
-        //gameStartButton.setMaxSize(130, 50);
-        //gameStartButton.setTextFill(Color.BLACK);
-        //gameStartButton.setStyle("-fx-background-color: #baffff; -fx-background-radius: 25");
-        //gameStartButton.setBorder();
         setConstraints(gameStartButton, 0,3,1 ,1,  HPos.CENTER, VPos.TOP);
 
         this.add(aboutButton, 1, 1);
-        aboutButton.setMaxSize(130, 50);
         setConstraints(aboutButton, 1,1 ,1 ,1,  HPos.CENTER, VPos.CENTER);
 
         this.add(newUserButton, 1, 2);
-        newUserButton.setMaxSize(130, 50);
         setConstraints(newUserButton, 1,2 ,1 ,1,  HPos.CENTER, VPos.TOP);
 
         this.add(loginButton, 0, 2);
-        loginButton.setMaxSize(130, 50);
         setConstraints(loginButton, 0,2 ,1 ,1,  HPos.CENTER, VPos.CENTER);
 
         this.add(rulesButton, 1, 3);
-        rulesButton.setMaxSize(130, 50);
         setConstraints(rulesButton, 1,2 ,1 ,1,  HPos.CENTER, VPos.BOTTOM);
 
         //Grid
@@ -162,5 +167,5 @@ public class StartView extends GridPane{
 
     Button getnewUserButton(){ return newUserButton; }
 
-    ArrayList<String> getUserList() { return  userList; }
+    public static ArrayList<String> getUserList() { return  userList; }
 }

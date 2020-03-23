@@ -1,21 +1,34 @@
 package be.kdg.nonogram.view.about;
 
 import javafx.geometry.*;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+
 public class AboutView extends GridPane {
     public Text titel;
     public Text aboutText;
+    FileInputStream inputstream;
+    Image image;
+    ImageView imageView;
 
-    public AboutView() {
+    public AboutView() throws FileNotFoundException {
         this.initialiseNodes();
         this.layoutNodes();
     }
 
-    private void initialiseNodes() {
+    private void initialiseNodes() throws FileNotFoundException {
+        inputstream = new FileInputStream("NonogramGame/resources/Images/nonogram.png");
+        image = new Image(inputstream);
+        imageView = new ImageView(image);
+
+
         this.titel = new Text("Wat is een nonogram ?");
         this.aboutText = new Text("Een nonogram is een beeldpuzzel. De oplossing is\n" +
                 " een tekening van gekleurde blokjes of pixels.\n" +
@@ -47,10 +60,14 @@ public class AboutView extends GridPane {
         aboutText.setFont(new Font(15));
         setConstraints(aboutText, 0, 0, 1, 1, HPos.CENTER, VPos.CENTER);
 
+        this.add(imageView, 0 , 1);
+        setConstraints(imageView, 0, 1, 1, 1, HPos.CENTER, VPos.TOP);
+
         ColumnConstraints column1 = new ColumnConstraints(700);
         this.getColumnConstraints().addAll(column1);
 
-        RowConstraints rowConstraint1 = new RowConstraints(500);
-        this.getRowConstraints().addAll(rowConstraint1);
+        RowConstraints rowConstraint1 = new RowConstraints(425);
+        RowConstraints rowConstraint2 = new RowConstraints(300);
+        this.getRowConstraints().addAll(rowConstraint1, rowConstraint2);
     }
 }

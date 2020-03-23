@@ -7,11 +7,16 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 
+import java.util.Timer;
+import java.util.TimerTask;
+
+
 public class GameView extends GridPane {
     //buttons
     private Button check;
-    private Button sluitVenster;
     private Button timerStart;
+    private Button newNonogram;
+    public int nonogramLevel;
 
     //GameButtons
     private Button button00;
@@ -66,8 +71,9 @@ public class GameView extends GridPane {
 
     //Text
     private Text titel;
+    private Text statusText;
 
-    //Timer
+    public Text getStatusText(){ return statusText;}
 
     //Rooster
     private GridPane rooster;
@@ -78,92 +84,74 @@ public class GameView extends GridPane {
     }
 
     private void initialiseNodes() {
-        this.check = new Button("Check Game");
-        this.sluitVenster = new Button("Sluit de game");
+        this.check = new Button("Check je nonogram");
+        this.newNonogram = new Button("Start de Game !");
 
         this.rooster = new GridPane();
         this.titel = new Text("Nonogram");
+        this.statusText = new Text("Game nog bezig");
+        this.nonogramLevel = 0;
 
-        this.button00 = new Button("0");
-        this.button01 = new Button("0");
-        this.button02 = new Button("2");
-        this.button03 = new Button("1");
-        this.button04 = new Button("1");
-        this.button05 = new Button("0");
-        this.button06 = new Button("0");
-        this.button10 = new Button("0");
-        this.button11 = new Button("0");
-        this.button12 = new Button("2");
-        this.button13 = new Button("2");
-        this.button14 = new Button("1");
-        this.button15 = new Button("1");
-        this.button16 = new Button("1");
-        this.button20 = new Button("0");
-        this.button21 = new Button("3");
+        this.button00 = new Button("");
+        this.button01 = new Button("");
+        this.button02 = new Button("");
+        this.button03 = new Button("");
+        this.button04 = new Button("");
+        this.button05 = new Button("");
+        this.button06 = new Button("");
+        this.button10 = new Button("");
+        this.button11 = new Button("");
+        this.button12 = new Button("");
+        this.button13 = new Button("");
+        this.button14 = new Button("");
+        this.button15 = new Button("");
+        this.button16 = new Button("");
+        this.button20 = new Button("");
+        this.button21 = new Button("");
         this.button22 = new Button("");
         this.button23 = new Button("");
         this.button24 = new Button("");
         this.button25 = new Button("");
         this.button26 = new Button("");
-        this.button30 = new Button("0");
-        this.button31 = new Button("1");
+        this.button30 = new Button("");
+        this.button31 = new Button("");
         this.button32 = new Button("");
         this.button33 = new Button("");
         this.button34 = new Button("");
         this.button35 = new Button("");
         this.button36 = new Button("");
-        this.button40 = new Button("0");
-        this.button41 = new Button("1");
+        this.button40 = new Button("");
+        this.button41 = new Button("");
         this.button42 = new Button("");
         this.button43 = new Button("");
         this.button44 = new Button("");
         this.button45 = new Button("");
         this.button46 = new Button("");
-        this.button50 = new Button("0");
-        this.button51 = new Button("2");
+        this.button50 = new Button("");
+        this.button51 = new Button("");
         this.button52 = new Button("");
         this.button53 = new Button("");
         this.button54 = new Button("");
         this.button55 = new Button("");
         this.button56 = new Button("");
-        this.button60 = new Button("0");
-        this.button61 = new Button("4");
+        this.button60 = new Button("");
+        this.button61 = new Button("");
         this.button62 = new Button("");
         this.button63 = new Button("");
         this.button64 = new Button("");
         this.button65 = new Button("");
         this.button66 = new Button("");
-        button00.isDisabled();
-        button01.isDisabled();
-        button02.isDisabled();
-        button03.isDisabled();
-        button04.isDisabled();
-        button05.isDisabled();
-        button06.isDisabled();
-        button10.isDisabled();
-        button11.isDisabled();
-        button12.isDisabled();
-        button13.isDisabled();
-        button14.isDisabled();
-        button15.isDisabled();
-        button16.isDisabled();
-        button20.isDisabled();
-        button21.isDisabled();
-        button30.isDisabled();
-        button31.isDisabled();
-        button40.isDisabled();
-        button41.isDisabled();
-        button50.isDisabled();
-        button51.isDisabled();
-        button60.isDisabled();
-        button61.isDisabled();
     }
-
-
 
     private void cellLayout(Button button) {
         button.setPrefWidth(55);
         button.setPrefHeight(55);
+    }
+
+    public void ButtonLayout(Button button){
+        button.setMaxSize(130, 50);
+        button.setTextFill(Color.BLACK);
+        button.setStyle("-fx-background-color: #D3D3D3; -fx-background-radius: 10");
     }
 
     private void layoutNodes() {
@@ -221,8 +209,7 @@ public class GameView extends GridPane {
 
         //rooster
         this.setAlignment(Pos.CENTER);
-        this.setGridLinesVisible(true);
-        rooster.setGridLinesVisible(true);
+        //this.setGridLinesVisible(true);
 
         this.add(rooster, 1, 1);
         //buttons
@@ -276,18 +263,26 @@ public class GameView extends GridPane {
         rooster.add(button65, 6, 5);
         rooster.add(button66, 6, 6);
 
-
         //text
         this.add(titel, 1, 0);
-        titel.setFont(new Font(60));
+        titel.setFont(new Font(80));
+        titel.setFill(Color.WHITESMOKE);
         setConstraints(titel, 1, 0, 1, 1, HPos.LEFT, VPos.CENTER);
 
+        this.add(statusText, 1, 2);
+        statusText.setFont(new Font(25));
+        statusText.setFill(Color.WHITESMOKE);
+        setConstraints(statusText, 1, 2, 1, 1, HPos.LEFT, VPos.CENTER);
+
         //buttons
-        this.add(sluitVenster, 2, 1);
-        setConstraints(sluitVenster, 2, 1, 1, 1, HPos.CENTER, VPos.BOTTOM);
+        ButtonLayout(check);
+        ButtonLayout(newNonogram);
 
         this.add(check, 2, 1);
         setConstraints(check, 2, 1, 1, 1, HPos.CENTER, VPos.CENTER);
+
+        this.add(newNonogram, 2, 1);
+        setConstraints(newNonogram, 2, 1, 1, 1, HPos.CENTER, VPos.TOP);
 
 
         ColumnConstraints column1 = new ColumnConstraints(100);
@@ -301,27 +296,51 @@ public class GameView extends GridPane {
         this.getRowConstraints().addAll(rowConstraints, rowConstraints2, rowConstraints3);
     }
     Button getCheck() {return check; }
+    Button getNewNonogram() {return newNonogram; }
 
+    Button getButton01() {return button01;}
+    Button getButton02() {return button02;}
+    Button getButton03() {return button03;}
+    Button getButton04() {return button04;}
+    Button getButton05() {return button05;}
+    Button getButton06() {return button06;}
+    Button getButton10() {return button10;}
+    Button getButton11() {return button11;}
+    Button getButton12() {return button12;}
+    Button getButton13() {return button13;}
+    Button getButton14() {return button14;}
+    Button getButton15() {return button15;}
+    Button getButton16() {return button16;}
+    Button getButton20() {return button20;}
+    Button getButton21() {return button21;}
     Button getButton22() {return button22;}
     Button getButton23() {return button23;}
     Button getButton24() {return button24;}
     Button getButton25() {return button25;}
     Button getButton26() {return button26;}
+    Button getButton30() {return button30;}
+    Button getButton31() {return button31;}
     Button getButton32() {return button32;}
     Button getButton33() {return button33;}
     Button getButton34() {return button34;}
     Button getButton35() {return button35;}
     Button getButton36() {return button36;}
+    Button getButton40() {return button40;}
+    Button getButton41() {return button41;}
     Button getButton42() {return button42;}
     Button getButton43() {return button43;}
     Button getButton44() {return button44;}
     Button getButton45() {return button45;}
     Button getButton46() {return button46;}
+    Button getButton50() {return button50;}
+    Button getButton51() {return button51;}
     Button getButton52() {return button52;}
     Button getButton53() {return button53;}
     Button getButton54() {return button54;}
     Button getButton55() {return button55;}
     Button getButton56() {return button56;}
+    Button getButton60() {return button60;}
+    Button getButton61() {return button61;}
     Button getButton62() {return button62;}
     Button getButton63() {return button63;}
     Button getButton64() {return button64;}

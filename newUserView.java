@@ -54,6 +54,8 @@ public class newUserView extends GridPane {
 
         this.add(nieuweGebruikerButton, 1, 2);
         nieuweGebruikerButton.setMaxSize(130, 50);
+        nieuweGebruikerButton.setTextFill(Color.BLACK);
+        nieuweGebruikerButton.setStyle("-fx-background-color: #D3D3D3; -fx-background-radius: 10");
         setConstraints(nieuweGebruikerButton, 1,2 ,1 ,1,  HPos.CENTER, VPos.CENTER);
 
         this.maxWidth(500);

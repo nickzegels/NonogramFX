@@ -3,7 +3,6 @@ package be.kdg.nonogram.view.start;
 import be.kdg.nonogram.model.NonogramModel;
 import be.kdg.nonogram.view.about.AboutPresenter;
 import be.kdg.nonogram.view.about.AboutView;
-//import be.kdg.nonogram.view.game.GamePresenter;
 import be.kdg.nonogram.view.game.GamePresenter;
 import be.kdg.nonogram.view.game.GameView;
 import be.kdg.nonogram.view.newUser.newUserPresenter;
@@ -14,8 +13,13 @@ import be.kdg.nonogram.view.rules.RulesView;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import javafx.stage.WindowEvent;
+
+import java.io.FileNotFoundException;
 
 public class StartPresenter {
     private final NonogramModel model;
@@ -52,7 +56,12 @@ public class StartPresenter {
             @Override
             public void handle(ActionEvent event) {
                 if (view.getAboutButton().isHover()) {
-                    AboutView aboutView = new AboutView();
+                    AboutView aboutView = null;
+                    try {
+                        aboutView = new AboutView();
+                    } catch (FileNotFoundException e) {
+                        e.printStackTrace();
+                    }
                     AboutPresenter aboutPresenter = new AboutPresenter(model, aboutView);
                     Stage aboutStage = new Stage();
                     aboutStage.initOwner(view.getScene().getWindow());
@@ -94,22 +103,24 @@ public class StartPresenter {
                 boolean login = false;
                 StartView.loginBool = false;
 
-                for (Object o : view.getUserList()) {
+                for (Object o : StartView.getUserList()) {
                     if (o.toString().equals(loginGegevens.toString())) {
                         StartView.loginBool = true;
                         System.out.println("Login gelukt");
                     } else {
-                        System.out.println("Login Mislukt");
+                        if (StartView.loginBool = true){
+                            } else {
+                            System.out.println("Login Mislukt");
+                        }
                     }
                 }
-                //System.out.println(StartView.loginBool.toString());
             }
         });
 
         view.getGameStartButton().setOnAction(new EventHandler<>() {
             @Override
             public void handle(ActionEvent actionEvent) {
-                if (StartView.loginBool) {
+                if (StartView.loginBool == true) {
                     GameView gameView = new GameView();
                     GamePresenter gamePresenter = new GamePresenter(model, gameView);
                     Stage GameStage = new Stage();
@@ -124,26 +135,6 @@ public class StartPresenter {
                 }
             }
         });
-
-
-        //        view.getScene().getWindow().setOnCloseRequest(new EventHandler<WindowEvent>() {
-        //            @Override
-        //            public
-        //            void handle(WindowEvent event) {
-        //                Alert alert = new Alert(Alert.AlertType.WARNING);
-        //                alert.setHeaderText("Je wilt het spel sluiten?");
-        //                alert.setContentText("Weet je het zeker?");
-        //                alert.setTitle("Opgelet!");
-        //                alert.getButtonTypes().clear();
-        //                ButtonType neen = new ButtonType("Neen");
-        //                ButtonType ja = new ButtonType("Ja");
-        //                alert.getButtonTypes().addAll(neen, ja);
-        //                alert.showAndWait();
-        //                if (alert.getResult() == null || alert.getResult().equals(neen)) {
-        //                    event.consume();
-        //                }
-        //            }
-        //        });
     }
 
     private void updateView() {
@@ -152,9 +143,22 @@ public class StartPresenter {
     }
 
     public void addWindowEventHandlers (){
-        //Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        //alert.setHeaderText("Welkom bij Nonogram!");
-        //alert.setTitle("Nonogram");
-        //alert.showAndWait();
+        view.getScene().getWindow().setOnCloseRequest(new EventHandler<WindowEvent>() {
+            @Override
+            public void handle(WindowEvent event) {
+                Alert alert = new Alert(Alert.AlertType.WARNING);
+                alert.setHeaderText("Je wilt het spel sluiten?");
+                alert.setContentText("Weet je het zeker?");
+                alert.setTitle("Opgelet!");
+                alert.getButtonTypes().clear();
+                ButtonType neen = new ButtonType("Neen");
+                ButtonType ja = new ButtonType("Ja");
+                alert.getButtonTypes().addAll(neen, ja);
+                alert.showAndWait();
+                if (alert.getResult() == null || alert.getResult().equals(neen)) {
+                    event.consume();
+                }
+            }
+        });
     }
 }
